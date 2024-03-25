@@ -1,6 +1,30 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
+import { ReactComponent as Icon3 } from "../../img/icons/icon-3.svg";
+import { ReactComponent as Icon5 } from "../../img/icons/icon-5.svg";
+import { ReactComponent as Icon7 } from "../../img/icons/icon-7.svg";
+import { ReactComponent as Icon12 } from "../../img/icons/icon-12.svg";
+import { ReactComponent as Icon13 } from "../../img/icons/icon-13.svg";
+import { ReactComponent as Icon14 } from "../../img/icons/icon-14.svg";
 
-function FutureHighlights() {
+function FutureHighlights({city}) {
+    const [futureWeather, setFutureWeather] = useState(null);
+    const API_URL = `https://api.openweathermap.org/data/2.5/forecast?q=${city}&appid=ead42f082c9a4385f3898099f78285de`;
+    useEffect(()=>{
+        fetch(API_URL)
+        .then((response)=>{
+            if (!response.ok) {
+                throw new Error("Error");
+              }
+              return response.json();
+        })
+        .then((data)=>{
+            setFutureWeather(data);
+            console.log(data);
+        })
+        .catch((e)=>{
+            console.log(e);
+        })
+    }, [city])
     return (
         <>
             <div className="forecast">
@@ -9,7 +33,7 @@ function FutureHighlights() {
                 </div>
                 <div className="forecast-content">
                     <div className="forecast-icon">
-                        <img src="./img/icons/icon-3.svg" alt="" width="48" />
+                        <Icon3 width="48" />
                     </div>
                     <div className="degree">23<sup>o</sup>C</div>
                     <small>18<sup>o</sup></small>
@@ -21,7 +45,7 @@ function FutureHighlights() {
                 </div>
                 <div className="forecast-content">
                     <div className="forecast-icon">
-                        <img src="./img/icons/icon-5.svg" alt="" width="48" />
+                        <Icon5 width="48" />
                     </div>
                     <div className="degree">23<sup>o</sup>C</div>
                     <small>18<sup>o</sup></small>
@@ -33,7 +57,7 @@ function FutureHighlights() {
                 </div>
                 <div className="forecast-content">
                     <div className="forecast-icon">
-                        <img src="./img/icons/icon-7.svg" alt="" width="48" />
+                        <Icon7 width="48" />
                     </div>
                     <div className="degree">23<sup>o</sup>C</div>
                     <small>18<sup>o</sup></small>
@@ -45,7 +69,7 @@ function FutureHighlights() {
                 </div>
                 <div className="forecast-content">
                     <div className="forecast-icon">
-                        <img src="./img/icons/icon-12.svg" alt="" width="48" />
+                        <Icon12 width="48" />
                     </div>
                     <div className="degree">23<sup>o</sup>C</div>
                     <small>18<sup>o</sup></small>
@@ -57,7 +81,7 @@ function FutureHighlights() {
                 </div>
                 <div className="forecast-content">
                     <div className="forecast-icon">
-                        <img src="./img/icons/icon-13.svg" alt="" width="48" />
+                        <Icon13 width="48" />
                     </div>
                     <div className="degree">23<sup>o</sup>C</div>
                     <small>18<sup>o</sup></small>
@@ -69,7 +93,7 @@ function FutureHighlights() {
                 </div>
                 <div className="forecast-content">
                     <div className="forecast-icon">
-                        <img src="./img/icons/icon-14.svg" alt="" width="48" />
+                        <Icon14 width="48" />
                     </div>
                     <div className="degree">23<sup>o</sup>C</div>
                     <small>18<sup>o</sup></small>
