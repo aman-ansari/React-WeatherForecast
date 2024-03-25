@@ -122,12 +122,14 @@
 		background: $bg-color;
 		color: white;
 	}
-	input[type="submit"]{
+	input[type="button"]{
 		position: absolute;
 		top: 5px;
 		right: 5px;
 		bottom: 5px;
 		padding: 0 40px;
+		background-color: #009ad8;
+		color: white;
 	}
 }
 
